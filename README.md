@@ -141,17 +141,137 @@ def subject(self, value):
 
     it is a naming convention that the attribute name and its properties be the same.
 
+## Class Variables and Class methods
+
+1. ### Class Variables: 
+   class variables are shared among all instance of a class and can be accessed directly.
+   ```py className.classMethod```
+   even if we have different objects, but this value will be shared among all of them.
 
 
-echo "# new_repo" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/Lotfullah21/object-oriented-programming.git
-git push -u origin main
+```py
+
+   class Subjects:
+    ai_core = "mathematics"  # Class variable
+
+    def __init__(self, instance_variable):
+        self.instance_variable = instance_variable
+
+# Accessing class variable
+print(Subjects.ai_core)  # Output: 0
+
+# Creating instances
+obj1 = Subjects(1)
+obj2 = Subjects(2)
+
+# Modifying class variable
+Subjects.ai_core = "statistics"
+print(obj1.ai_core) ## statistics
+print(obj2.ai_core) ## statistics
+
+```
 
 
-git remote add origin https://github.com/Lotfullah21/object-oriented-programming.git
-git branch -M main
-git push -u origin main
+2. ### Class Methods:
+Class methods are methods that are related to the class only and not the instance of the class. They are defined using the @classmethod decorator.
+
+
+
+## Inheritance
+
+
+
+```py
+class Mathematics:
+    def __init__(self,name, duration):
+        self.duration = duration
+        self.name = name
+        ...
+
+
+
+class ArtificialIntelligence:
+    def __init__(self,name, duration):
+        self.duration = duration
+        self.name = name
+        ...
+        
+class Programming:
+    def __init__(self,name, duration):
+        self.duration = duration
+        self.name = name
+        ...
+
+
+maths = Mathematics("Computation","6 years")
+aritificialIntelligence = ArtificialIntelligence("statistics","4 years")
+programming = Programming("Logic","6 months")
+
+```
+
+in the above code, Mathematics is the parent class and the other classes are known as child class.
+we add in parenthesis the name of the class that the child class is going to inherit and inside the child's init method, we call the parent's init method.
+the super() refers to the super or parent class of child class.
+we say call the init method of child class.
+
+one thing should be noted is that all the parameters or attributes of the parent class should be present in child class and vice versa, other wise the TypeError will be triggered.
+
+
+
+## Operator OverLoading
+
+```py
+
+class Course:
+    def __init__(self, name,prerequisite, duration):
+        self.name = name
+        self.prerequisite = prerequisite
+        self.duration = duration
+        
+    
+    def __str__(self):
+        return f"{self.name} requires {self.prerequisite} as its prerequisite and it takes {self.duration} months to complete. "
+        
+machineLearning = Course("Machine learning","Statistics",6)
+deepLearning = Course("Deep learning","Calculus",4)
+
+duration = machineLearning.duration + deepLearning.duration
+prerequisites = machineLearning.prerequisite + " and " + deepLearning.prerequisite
+name = machineLearning.name + " and " + deepLearning.name
+
+print(name)
+print(prerequisites)
+print(duration)
+
+
+```
+
+
+Using operator overloading allowed us to define on common instance method and we can use as many times as we want.
+
+```py 
+class Course:
+    def __init__(self, name,prerequisite, duration):
+        self.name = name
+        self.prerequisite = prerequisite
+        self.duration = duration
+        
+    
+    def __str__(self):
+        return f"{self.name} requires {self.prerequisite} as its prerequisite and it takes {self.duration} months to complete. "
+    
+    # self refers whatever object on the left and other refers to the object on the right side of + operator.
+    def __add__(self, other):
+        duration = self.duration + other.duration
+        prerequisites = self.prerequisite + " and " + other.prerequisite
+        name = self.name + " and " + other.name
+        # after object on the left and object on the right together, return one new object with the resulted operations.
+        return Course(name,prerequisites,duration)
+        
+machineLearning = Course("Machine learning","Statistics",6)
+deepLearning = Course("Deep learning","Calculus",3)
+
+new_course = machineLearning + deepLearning 
+print(new_course)
+
+```
