@@ -1,24 +1,25 @@
 # Class
+
 classes are the mould for the kind of objects we intend to create.
 whenever the class is called, we are creating an object of that class, in fact a class also called data type, where we are having the freedom to add features, types and methods to that data type.
 
 class is definition of the new data type and the object is representation or instantiation of that data type.
 
 ## attributes:
+
 the variables used inside a class is called attributes (instance variable).
 In object-oriented programming, an attribute is a piece of information or a characteristic associated with an object.
-Objects are instances of classes, and classes define the blueprint for objects. 
+Objects are instances of classes, and classes define the blueprint for objects.
 
 ## methods:
 
 functions inside a class is known as methods.
- 
- ## __init__ (instance method):
 
- it is used to initialize the contents of an object inside a class.
+## **init** (instance method):
 
- 
- using __ini__ method, we are laying out the foundation of which variables are allowed inside the class (mould), otherwise our class can be messy and others can add their own variables inside our class (blueprint).
+it is used to initialize the contents of an object inside a class.
+
+using **ini** method, we are laying out the foundation of which variables are allowed inside the class (mould), otherwise our class can be messy and others can add their own variables inside our class (blueprint).
 
 in other words we are defining what those attributes can be and cannot be inside our class.
 
@@ -36,25 +37,23 @@ class Details:
 def main():
     details = get_info()
     print(f"{details.name} will take {details.duration} months to master. ")
-    
+
 def get_info():
     details = Details()
     name = input("Name: ")
     duration = input("Duration: ")
     details = Details(name, duration)
     return details
-    
+
 if __name__ == "__main__":
     main()
 
 ```
 
-
 ##### Two major steps
 
-
 1. #### Initialization:
-initializes the contents of the object.
+   initializes the contents of the object.
 
 ```py
  def __init__(self,name, duration):
@@ -66,43 +65,40 @@ initializes the contents of the object.
 
 ```
 
-
 2. #### Constructor call:
-it construct an object out of the mould we have made under the class name.
-it uses our class as template so that every object have the same structure, but we can customize the contents of the object.
+   it construct an object out of the mould we have made under the class name.
+   it uses our class as template so that every object have the same structure, but we can customize the contents of the object.
 
 ```py
 new_object_name = class_name(instance_variables)
 ```
 
 as the execution starts, when it reaches to instance construction, it will create an empty object inside the computer memory.
-when it calls that instance, it will directly move upward and calls __init__ method, and in there using self, the values saved inside the object in computer memory.
+when it calls that instance, it will directly move upward and calls **init** method, and in there using self, the values saved inside the object in computer memory.
 we can use any thing instead of self, but it is the convention to use this name. the reason behind having that extra variable(self) is to point to the current object variables that we just created and use it in other place inside the class.
 
+### self:
 
-### __str__(self)
+self acts as a reference to the instance, allowing you to access its attributes and methods.
+
+### **str**(self)
 
 if we can an object directly in a function like print, we will see only the address of that object.
-if we want see the string representation of our object we can use __str__ instance method.
-using self, we are having access to the current object and we can call that object, whenever print(object) is called, it will trigger the __str__(self) method.
-
-
+if we want see the string representation of our object we can use **str** instance method.
+using self, we are having access to the current object and we can call that object, whenever print(object) is called, it will trigger the **str**(self) method.
 
 ### Property
 
-properties are a way to access and manipulate attributes through methods (getter, setter, and deleter methods). 
-
+properties are a way to access and manipulate attributes through methods (getter, setter, and deleter methods).
 
 a property is a special kind of attribute that is accessed like a normal attribute but is implemented using methods known as getter, setter, and deleter.
-Properties allow you to define custom behavior for getting, setting, and deleting an attribute. 
-
+Properties allow you to define custom behavior for getting, setting, and deleting an attribute.
 
 the main reason behind using property is to have controlled access to the property of an object.
 
-
 #### Decorators:
 
-functions that modify or extend the behavior of other functions. 
+functions that modify or extend the behavior of other functions.
 Decorators are commonly used for tasks like logging, authentication, measuring execution time, and more.
 
 #### Components of property
@@ -111,7 +107,7 @@ Usually, we use from three components
 
 1. #### Getter:
    it is responsible for getting value of an attribute
-   use py```@property``` decorator to create a read-only property
+   use py`@property` decorator to create a read-only property
 
 ```py
 @property
@@ -121,8 +117,8 @@ def subject(self):
 
 2. ### Setter:
    a setter method is responsible for setting value of an attribute
-   decorate a method by ```py method_name.setter``` to create a setter for a specific property
-   
+   decorate a method by `py method_name.setter` to create a setter for a specific property
+
 ```py
 @subject.setter
 def subject(self, value):
@@ -130,24 +126,24 @@ def subject(self, value):
 ```
 
 3. ### Deleter:
+
    a deleter method is responsible for an attribute (a specific information about an object present in the class)
-   Decorate a method with py```@<property_name>.deleter``` to create a deleter for a specific property.
+   Decorate a method with py`@<property_name>.deleter` to create a deleter for a specific property.
 
-    ```py
-    @property
-    def subject(self):
-        del self._subject
-    ```
+   ```py
+   @property
+   def subject(self):
+       del self._subject
+   ```
 
-    it is a naming convention that the attribute name and its properties be the same.
+   it is a naming convention that the attribute name and its properties be the same.
 
 ## Class Variables and Class methods
 
-1. ### Class Variables: 
+1. ### Class Variables:
    class variables are shared among all instance of a class and can be accessed directly.
-   ```py className.classMethod```
+   `py className.classMethod`
    even if we have different objects, but this value will be shared among all of them.
-
 
 ```py
 
@@ -171,15 +167,10 @@ print(obj2.ai_core) ## statistics
 
 ```
 
-
 2. ### Class Methods:
-Class methods are methods that are related to the class only and not the instance of the class. They are defined using the @classmethod decorator.
-
-
+   Class methods are methods that are related to the class only and not the instance of the class. They are defined using the @classmethod decorator.
 
 ## Inheritance
-
-
 
 ```py
 class Mathematics:
@@ -195,7 +186,7 @@ class ArtificialIntelligence:
         self.duration = duration
         self.name = name
         ...
-        
+
 class Programming:
     def __init__(self,name, duration):
         self.duration = duration
@@ -216,8 +207,6 @@ we say call the init method of child class.
 
 one thing should be noted is that all the parameters or attributes of the parent class should be present in child class and vice versa, other wise the TypeError will be triggered.
 
-
-
 ## Operator OverLoading
 
 ```py
@@ -227,11 +216,11 @@ class Course:
         self.name = name
         self.prerequisite = prerequisite
         self.duration = duration
-        
-    
+
+
     def __str__(self):
         return f"{self.name} requires {self.prerequisite} as its prerequisite and it takes {self.duration} months to complete. "
-        
+
 machineLearning = Course("Machine learning","Statistics",6)
 deepLearning = Course("Deep learning","Calculus",4)
 
@@ -246,20 +235,19 @@ print(duration)
 
 ```
 
-
 Using operator overloading allowed us to define on common instance method and we can use as many times as we want.
 
-```py 
+```py
 class Course:
     def __init__(self, name,prerequisite, duration):
         self.name = name
         self.prerequisite = prerequisite
         self.duration = duration
-        
-    
+
+
     def __str__(self):
         return f"{self.name} requires {self.prerequisite} as its prerequisite and it takes {self.duration} months to complete. "
-    
+
     # self refers whatever object on the left and other refers to the object on the right side of + operator.
     def __add__(self, other):
         duration = self.duration + other.duration
@@ -267,11 +255,64 @@ class Course:
         name = self.name + " and " + other.name
         # after object on the left and object on the right together, return one new object with the resulted operations.
         return Course(name,prerequisites,duration)
-        
+
 machineLearning = Course("Machine learning","Statistics",6)
 deepLearning = Course("Deep learning","Calculus",3)
 
-new_course = machineLearning + deepLearning 
+new_course = machineLearning + deepLearning
 print(new_course)
 
 ```
+
+### Compile Time Polymorphism(Method Overloading):
+
+Python does not support method overloading in the same way as statically typed languages like Java or C++, where the compiler selects the appropriate method based on the types and number of arguments. However, Python offers a more flexible approach using default parameter values and variable-length argument lists.
+
+### Run Time Polymorphism(method overloading):
+
+when a sub-class has the same structure, same name and same parameters as its super class, it will override the method in its super class.
+
+```py
+class Physics:
+    def at_your_core(self):
+        return "Explaining Universe"
+
+class Maths(Physics):
+    def at_your_core(self):
+        return "Universe Language"
+
+class Programming(Maths):
+    def at_your_core(self):
+        return "Logic"
+
+# Creating instances of Physics, Maths, and Programming.
+physics = Physics()
+maths = Maths()
+programming = Programming()
+# Calling overridden methods
+print(physics.at_your_core())  # Output: Explaining Universe
+print(maths.at_your_core())  # Output: Universe Language
+print(programming.at_your_core())  # Output: Logic
+
+```
+
+From above block of code, we can see all of them are having same method name, but the later ones are overriding the earlier ones methods.
+
+##### How Objects are stored in memory?
+
+The heap and the stack are both regions of memory used for different purposes, and they are physically located in the computer's RAM (Random Access Memory).
+
+## Heap
+
+heap is a region of memory where dynamic allocation of memory happens;
+functions,classes, objects, lists, dictionaries and data structure types are stored in heap.
+when a class is created, a particular memory location will be assigned to that object in heap.
+
+## Stack
+
+This is a region of memory where function calls and local variables related to that function will be stored.
+it also contains the information about a particular function's location where it was called.
+If a function is called by another function, for that function a new window or scope will be opened where all the variables are local to that function. Once the execution is done, that scope will be removed from stack and the controls goes back to the caller of that function.
+stack is mainly responsible for managing function calls and local variables.
+
+Variables are just references to the objects, and objects are stored on the heap.
